@@ -1,4 +1,4 @@
-package com.example.tribeCarrier;
+package com.example.tribeCarrier.entity;
 
 
 public class TribeEntity {

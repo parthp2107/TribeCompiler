@@ -1,5 +1,10 @@
-package com.example.tribeCarrier;
+package com.example.tribeCarrier.controller;
 
+import com.example.tribeCarrier.entity.TribeCheckUserEntity;
+import com.example.tribeCarrier.entity.TribeUserLoginEntity;
+import com.example.tribeCarrier.service.TribeService;
+import com.example.tribeCarrier.entity.TribeCreateUserEntity;
+import com.example.tribeCarrier.entity.TribeEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -11,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RestController()
 public class OneCompilerPost {
@@ -19,21 +26,24 @@ public class OneCompilerPost {
   @Autowired
   TribeService tribeService;
 
-  @GetMapping("/users")
-  private List<TribeUserLogin> getUser() {
-    return tribeService.getLoggedInUser();
-  }
-
-  @GetMapping("/users/{id}")
-  private TribeUserLogin getUserById(@PathVariable("id") int id)
-  {
-    return tribeService.getUserById(id);
-  }
-
   @PostMapping("/addUser")
-  private int getUserById(@RequestBody TribeUserLogin tribeUserLogin) throws Exception {
-      tribeService.addUser(tribeUserLogin);
-      return tribeUserLogin.getUserId();
+  private String getUserById(@RequestBody TribeCreateUserEntity tribeCreateUserEntity) {
+    tribeService.addUser(tribeCreateUserEntity);
+    return tribeCreateUserEntity.getEmail();
+  }
+
+  @PostMapping("/user")
+  public TribeUserLoginEntity getUserByEmail(@RequestBody TribeCheckUserEntity tribeCheckUserEntity, TribeCreateUserEntity tribeCreateUserEntity) throws Exception {
+    if (Objects.equals(tribeCheckUserEntity.getEmail(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getEmail()) &&
+            Objects.equals(tribeCheckUserEntity.getPassword(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getPassword())) {
+      TribeUserLoginEntity tribeUserLogin = new TribeUserLoginEntity();
+      tribeUserLogin.setEmail(tribeCheckUserEntity.getEmail());
+      tribeUserLogin.setIsLoggedIn("true");
+      tribeUserLogin.setSession("Date");
+      return tribeUserLogin;
+    } else {
+      throw new Exception("User not present");
+    }
   }
 
   @PostMapping("/test")
@@ -65,3 +75,14 @@ public class OneCompilerPost {
 //    JSONObject jsonObject = new JSONObject(responseAsString);
 //    return jsonObject.get("stdout");
 //  }
+
+
+  /*@GetMapping("/users")
+  private List<TribeCreateUserEntity> getUser() {
+    return tribeService.getLoggedInUser();
+  }
+
+  @GetMapping("/users/{id}")
+  public TribeCreateUserEntity getUserById(@PathVariable("id") int id) {
+    return tribeService.getUserById(id);
+  }*/
