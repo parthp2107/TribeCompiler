@@ -1,7 +1,5 @@
 package com.example.tribeCarrier.entity;
 
-import javax.persistence.Entity;
-
 public class TribeCheckUserEntity {
 
   private String email;

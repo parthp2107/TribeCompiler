@@ -1,9 +1,8 @@
 package com.example.tribeCarrier.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -21,7 +20,13 @@ public class TribeUserLoginEntity {
   private String isLoggedIn;
 
   @Column
-  private String session;
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+  @Temporal(TemporalType.DATE)
+  private Date sessionDate;
+
+  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="HH:mm:ss")
+  @Temporal(TemporalType.TIME)
+  private Date sessionTime;
 
   public int getId() {
     return id;
@@ -39,7 +44,7 @@ public class TribeUserLoginEntity {
     this.email = email;
   }
 
-  public String isLoggedIn() {
+  public String getIsLoggedIn() {
     return isLoggedIn;
   }
 
@@ -47,12 +52,21 @@ public class TribeUserLoginEntity {
     this.isLoggedIn = isLoggedIn;
   }
 
-  public String getSession() {
-    return session;
+
+  public Date getSessionDate() {
+    return sessionDate;
   }
 
-  public void setSession(String  session) {
-    this.session = session;
+  public void setSessionDate(Date  sessionDate) {
+    this.sessionDate = sessionDate;
+  }
+
+  public Date getSessionTime() {
+    return sessionTime;
+  }
+
+  public void setSessionTime(Date sessionTime) {
+    this.sessionTime = sessionTime;
   }
 
 }

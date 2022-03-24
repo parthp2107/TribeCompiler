@@ -1,10 +1,10 @@
 package com.example.tribeCarrier.controller;
 
 import com.example.tribeCarrier.entity.TribeCheckUserEntity;
-import com.example.tribeCarrier.entity.TribeUserLoginEntity;
-import com.example.tribeCarrier.service.TribeService;
 import com.example.tribeCarrier.entity.TribeCreateUserEntity;
 import com.example.tribeCarrier.entity.TribeEntity;
+import com.example.tribeCarrier.entity.TribeUserLoginEntity;
+import com.example.tribeCarrier.service.TribeService;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -13,11 +13,12 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @RestController()
@@ -39,7 +40,8 @@ public class OneCompilerPost {
       TribeUserLoginEntity tribeUserLogin = new TribeUserLoginEntity();
       tribeUserLogin.setEmail(tribeCheckUserEntity.getEmail());
       tribeUserLogin.setIsLoggedIn("true");
-      tribeUserLogin.setSession("Date");
+      tribeUserLogin.setSessionDate(new Date());
+      tribeUserLogin.setSessionTime(new Date());
       return tribeUserLogin;
     } else {
       throw new Exception("User not present");
