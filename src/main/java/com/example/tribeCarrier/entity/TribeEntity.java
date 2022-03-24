@@ -11,11 +11,6 @@ public class TribeEntity {
     this.codeString = codeString;
   }
 
-//  @Override
-//  public String toString() {
-//    return "Response [codeString]" + codeString + "]";
-//  }
-
   public String getCodeString() {
     return codeString;
   }

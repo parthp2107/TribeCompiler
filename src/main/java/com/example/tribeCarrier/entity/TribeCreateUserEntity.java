@@ -3,12 +3,12 @@ package com.example.tribeCarrier.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TribeCompiler")
+@Table(name = "TRIBE_COMPILER")
 public class TribeCreateUserEntity {
 
   @Id
   @Column
-  private int userId;
+  private int id;
 
   @Column
   private String name;
@@ -23,11 +23,11 @@ public class TribeCreateUserEntity {
   private String experience;
 
   public int getUserId() {
-    return userId;
+    return id;
   }
 
-  public void setUserId(int userId) {
-    this.userId = userId;
+  public void setUserId(int id) {
+    this.id = id;
   }
 
   public String getName() {
