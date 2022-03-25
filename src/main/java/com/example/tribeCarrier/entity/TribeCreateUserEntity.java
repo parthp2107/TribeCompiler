@@ -8,6 +8,7 @@ public class TribeCreateUserEntity {
 
   @Id
   @Column
+  @GeneratedValue
   private int id;
 
   @Column

@@ -59,7 +59,7 @@ public class OneCompilerPost {
   @GetMapping("/getProblemStatement")
   private TribeProblemsEntity getProblemStatement(@RequestBody TribeProblemStatementEntity tribeProblemStatementEntity, TribeProblemsEntity tribeProblemsEntity) throws Exception {
     if (Objects.equals(tribeProblemStatementEntity.getCategory(), tribeService.getUserByCategory(tribeProblemStatementEntity.getCategory()).getCategory()) &&
-    Objects.equals(tribeProblemStatementEntity.getExperience(), tribeService.getUserByCategory(tribeProblemStatementEntity.getCategory()).getExperience())) {
+            Objects.equals(tribeProblemStatementEntity.getExperience(), tribeService.getUserByCategory(tribeProblemStatementEntity.getCategory()).getExperience())) {
       return tribeService.getProblemStatement(tribeProblemStatementEntity.getCategory(), tribeProblemStatementEntity.getExperience());
     } else {
       throw new Exception("Problem Statement not present");
@@ -67,7 +67,7 @@ public class OneCompilerPost {
   }
 
   @PostMapping("/files")
-  public String  uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+  public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
     Path filePath = Paths.get(uploadPath);
     try {
       tribeService.save(file);
@@ -81,9 +81,10 @@ public class OneCompilerPost {
   public Object test(@RequestBody TribeEntity tribeEntity) throws IOException {
     HttpClient httpClient = HttpClientBuilder.create().build();
     HttpPost request = new HttpPost("https://onecompiler.com/api/code/exec");
-    StringEntity javascriptParam = new StringEntity("{\"name\":\"JavaScript\",\"title\":\"JavaScript Hello World\",\"version\":\"ES6\",\"mode\":\"javascript\",\"description\":null,\"extension\":\"js\",\"languageType\":\"programming\",\"active\":true,\"properties\":{\"language\":\"javascript\",\"docs\":true,\"tutorials\":true,\"cheatsheets\":true,\"filesEditable\":true,\"filesDeletable\":true,\"files\":[{\"name\":\"HelloWorld.js\",\"content\":\"" + tribeEntity.getCodeString() + "\"}],\"newFileOptions\":[{\"helpText\":\"New JS file\",\"name\":\"script${i}.js\",\"content\":\"/**\\n *  In main file\\n *  let script${i} = require('./script${i}');\\n *  console.log(script${i}.sum(1, 2));\\n */\\n\\nfunction sum(a, b) {\\n    return a + b;\\n}\\n\\nmodule.exports = { sum };\"},{\"helpText\":\"Add Dependencies\",\"name\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"main_app\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"\\\",\\n  \\\"main\\\": \\\"HelloWorld.js\\\",\\n  \\\"dependencies\\\": {\\n    \\\"lodash\\\": \\\"^4.17.21\\\"\\n  }\\n}\"}]},\"visibility\":\"public\"}");
+    StringEntity javascriptParam = new StringEntity("{\"name\":\"JavaScript\",\"title\":\"JavaScript Hello World\",\"version\":\"ES6\",\"mode\":\"javascript\",\"description\":null,\"extension\":\"js\",\"languageType\":\"programming\",\"active\":true,\"properties\":{\"language\":\"javascript\",\"docs\":true,\"tutorials\":true,\"cheatsheets\":true,\"filesEditable\":true,\"filesDeletable\":true,\"files\":[{\"name\":\"HelloWorld.js\",\"content\":\"" + tribeEntity.getCodeString() + "\"}],\"newFileOptions\":[{\"helpText\":\"New JS file\",\"name\":\"script${i}.js\",\"content\":\"/**\\n *  In main file\\n *  let script${i} = require('./script${i}');\\n *  console.log(script${i}.sum(1, 2));\\n */\\n\\nfunction sum(a, b) {\\n    return a + b;\\n}\\n\\nmodule.exports = { sum };\"},{\"helpText\":\"Add Dependencies\",\"name\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"main_app\\\",\\n  \\\"version\\\": \\\"1.0.0\\\",\\n  \\\"description\\\": \\\"\\\",\\n  \\\"main\\\": \\\"HelloWorld.js\\\",\\n  \\\"dependencies\\\": {\\n    \\\"lodash\\\": \\\"^4.17.21\\\"\\n  }\\n}\"}]},\"stdin\":\"" + tribeEntity.getStdInString() + "\"}\"visibility\":\"public\"}");
+    StringEntity java = new StringEntity("{\"name\":\"Java\",\"title\":\"3xx5fvngn\",\"version\":\"11\",\"mode\":\"java\",\"description\":null,\"extension\":\"java\",\"concurrentJobs\":2,\"languageType\":\"programming\",\"active\":true,\"properties\":{\"language\":\"java\",\"docs\":true,\"tutorials\":false,\"cheatsheets\":true,\"filesEditable\":true,\"filesDeletable\":true,\"files\":[{\"name\":\"Main.java\",\"content\":\"" + tribeEntity.getCodeString() + "\"}],\"newFileOptions\":[{\"helpText\":\"New Java file\",\"name\":\"NewClass${i}.java\",\"content\":\"public class NewClass${i} {\\n\\n  public String sayHelloFromNewClass(){\\n    return \\\"Hello from New Class\\\";\\n  }\\n\\n}\"},{\"helpText\":\"Add Dependencies\",\"name\":\"build.gradle\",\"content\":\"apply plugin:'application'\\nmainClassName = 'HelloWorld'\\n\\nrun { standardInput = System.in }\\nsourceSets { main { java { srcDir './' } } }\\n\\nrepositories {\\n    jcenter()\\n}\\n\\ndependencies {\\n    // add dependencies here like following\\n    // compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'\\n}\"}],\"stdin\":\"" + tribeEntity.getStdInString() + "\"},\"_id\":\"3xx5fvngn\",\"user\":null,\"idToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjN4eDVmdm5nbiIsImlhdCI6MTY0ODE5MzAyMn0.jbfAqnj_vte2RWScaz9GVFzFHhjgF1d16iWC3o1SoGw\",\"visibility\":\"public\"}");
     request.addHeader("content-type", "application/json");
-    request.setEntity(javascriptParam);
+    request.setEntity(java);
     HttpResponse response = httpClient.execute(request);
     String responseAsString = EntityUtils.toString(response.getEntity());
     System.out.println(responseAsString);

@@ -1,16 +1,14 @@
 package com.example.tribeCarrier.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "TribeProblem")
 public class TribeProblemsEntity {
 
   @Id
+  @GeneratedValue
   @Column
   private int problemId;
 

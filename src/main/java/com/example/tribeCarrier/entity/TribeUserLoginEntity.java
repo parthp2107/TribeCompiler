@@ -10,6 +10,7 @@ import java.util.Date;
 public class TribeUserLoginEntity {
 
   @Id
+  @GeneratedValue
   @Column
   private int id;
 
