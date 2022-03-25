@@ -2,15 +2,16 @@ package com.example.tribeCarrier.entity;
 
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 public class TribeEntity {
 
   public TribeEntity() {}
   private String codeString;
 
-  private Array[] stdInString;
+  private List<String> stdInString;
 
-  public TribeEntity(String codeString, Array[] stdInString){
+  public TribeEntity(String codeString, List<String> stdInString){
     super();
     this.codeString = codeString;
     this.stdInString = stdInString;
@@ -24,11 +25,11 @@ public class TribeEntity {
     this.codeString = codeString;
   }
 
-  public Array[] getStdInString() {
+  public List<String> getStdInString() {
     return stdInString;
   }
 
-  public void setStdInString(Array[] stdInString) {
+  public void setStdInString(List<String> stdInString) {
     this.stdInString = stdInString;
   }
 
