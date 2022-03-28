@@ -2,8 +2,10 @@ package com.example.tribeCarrier.service;
 
 import com.example.tribeCarrier.entity.TribeCreateUserEntity;
 import com.example.tribeCarrier.entity.TribeProblemsEntity;
+import com.example.tribeCarrier.entity.UserProblemEntity;
 import com.example.tribeCarrier.repository.TribeProblemRepository;
 import com.example.tribeCarrier.repository.TribeRepository;
+import com.example.tribeCarrier.repository.UserProblemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -29,6 +31,8 @@ public class TribeService {
   TribeRepository tribeRepository;
   @Autowired
   TribeProblemRepository tribeProblemRepository;
+  @Autowired
+  UserProblemRepository userProblemRepository;
 
   public List<Object> getAllUsersById() {
     return tribeRepository.getAllById();
@@ -44,6 +48,14 @@ public class TribeService {
 
   public TribeProblemsEntity getProblemStatement(String category, String experience) {
     return tribeProblemRepository.getProblemStatement(category, experience);
+  }
+
+  public UserProblemEntity demo(int id, int problem_id, int user_id) {
+    return userProblemRepository.insertToTable(id, problem_id, user_id);
+  }
+
+  public UserProblemEntity addUserProblemRef(UserProblemEntity userProblemEntity) {
+    return userProblemRepository.save(userProblemEntity);
   }
 
   public TribeCreateUserEntity getUserById(int id) {

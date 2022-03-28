@@ -46,6 +46,19 @@ public class OneCompilerPost {
     return tribeCreateUserEntity.getEmail();
   }
 
+  @PostMapping("/addUserProblemReference")
+  private Object addUserProblemRef(@RequestBody UserProblemRef userProblemRef, UserProblemEntity userProblemEntity) {
+    List<Integer> output = new ArrayList<>();
+    for (int i = 0; i < userProblemRef.getProblem_id().size(); i++) {
+      UserProblemEntity userProblemEntity1 = new UserProblemEntity();
+      userProblemEntity1.setId(userProblemEntity.getId());
+      userProblemEntity1.setUser_id(userProblemRef.getUser_id());
+      output.add((Integer) userProblemRef.getProblem_id().get(i));
+      userProblemEntity1.setProblem_id(output.get(i));
+      tribeService.addUserProblemRef(userProblemEntity1);
+    } return output;
+  }
+
   @PostMapping("/user")
   public TribeUserLoginEntity getUserByEmail(@RequestBody TribeCheckUserEntity tribeCheckUserEntity, TribeCreateUserEntity tribeCreateUserEntity) throws Exception {
     if (Objects.equals(tribeCheckUserEntity.getEmail(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getEmail()) &&
