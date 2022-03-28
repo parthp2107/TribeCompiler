@@ -31,6 +31,15 @@ public class OneCompilerPost {
   @Autowired
   TribeService tribeService;
 
+  @GetMapping("/getAllUserId")
+  private List<Object> getAllUsersId() {
+    return tribeService.getAllUsersById();
+  }
+
+  @GetMapping("/getAllProblemId")
+    private List<Object> getAllProblemId() {
+      return tribeService.getAllProblemId();
+    }
   @PostMapping("/addUser")
   private String getUserById(@RequestBody TribeCreateUserEntity tribeCreateUserEntity) {
     tribeService.addUser(tribeCreateUserEntity);

@@ -17,6 +17,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Service
 public class TribeService {
@@ -28,6 +29,14 @@ public class TribeService {
   TribeRepository tribeRepository;
   @Autowired
   TribeProblemRepository tribeProblemRepository;
+
+  public List<Object> getAllUsersById() {
+    return tribeRepository.getAllById();
+  }
+
+  public List<Object> getAllProblemId() {
+    return tribeProblemRepository.getAllProblemId();
+  }
 
   public TribeCreateUserEntity getUserByEmail(String email) {
     return tribeRepository.findByEmail(email);
