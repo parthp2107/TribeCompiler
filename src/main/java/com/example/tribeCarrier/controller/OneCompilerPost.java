@@ -40,8 +40,9 @@ public class OneCompilerPost {
     private List<Object> getAllProblemId() {
       return tribeService.getAllProblemId();
     }
+
   @PostMapping("/addUser")
-  private String getUserById(@RequestBody TribeCreateUserEntity tribeCreateUserEntity) {
+  private String addUser(@RequestBody TribeCreateUserEntity tribeCreateUserEntity) {
     tribeService.addUser(tribeCreateUserEntity);
     return tribeCreateUserEntity.getEmail();
   }
@@ -57,6 +58,11 @@ public class OneCompilerPost {
       userProblemEntity1.setProblem_id(output.get(i));
       tribeService.addUserProblemRef(userProblemEntity1);
     } return output;
+  }
+
+  @PostMapping("/getUserProblemDetails")
+  private List<Object> getUserProblemDetails(@RequestBody UserProblemEntity userProblemEntity) {
+    return tribeService.getUserProblemDetails(userProblemEntity.getUser_id(), userProblemEntity.getProblem_id());
   }
 
   @PostMapping("/user")

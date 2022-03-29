@@ -1,12 +1,12 @@
 package com.example.tribeCarrier.repository;
 
 import com.example.tribeCarrier.entity.UserProblemEntity;
-import com.example.tribeCarrier.entity.UserProblemRef;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
 public interface UserProblemRepository extends CrudRepository<UserProblemEntity, Integer> {
 
-  @Query(value = "insert into user_problem_reference (id ,problem_id, user_id) values(?1, ?2, ?3)" ,nativeQuery = true)
-  UserProblemEntity insertToTable(int id ,int problem_id, int user_id);
+  @Query(value = "select u.id, u.name, u.email, u.user_experience, p.problem_id, p.problem_name, p.category, p.problem_experience from TRIBE_COMPILER as u left join user_problem_reference as r on u.id=r.user_id left join tribe_problem as p on r.problem_id=p.problem_id where r.user_id=?1 and r.problem_id=?2", nativeQuery = true)
+  List<Object> getUserProblemDetails(int user_id, int problem_id);
 }
