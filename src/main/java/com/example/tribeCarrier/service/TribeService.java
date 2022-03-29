@@ -46,8 +46,8 @@ public class TribeService {
     return tribeRepository.findByEmail(email);
   }
 
-  public TribeProblemsEntity getProblemStatement(String category, String experience) {
-    return tribeProblemRepository.getProblemStatement(category, experience);
+  public TribeProblemsEntity getProblemStatement(String category, String problem_experience) {
+    return tribeProblemRepository.getProblemStatement(category, problem_experience);
   }
 
   public UserProblemEntity demo(int id, int problem_id, int user_id) {
@@ -72,10 +72,6 @@ public class TribeService {
 
   public TribeProblemsEntity getUserByCategory(String category) {
     return tribeProblemRepository.findByCategory(category);
-  }
-
-  public TribeProblemsEntity getUserByExperience(String experience) {
-    return tribeProblemRepository.findByExperience(experience);
   }
 
   @PostConstruct

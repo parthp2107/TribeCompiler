@@ -21,7 +21,7 @@ public class TribeCreateUserEntity {
   private String email;
 
   @Column
-  private String experience;
+  private String user_experience;
 
   public int getUserId() {
     return id;
@@ -55,12 +55,12 @@ public class TribeCreateUserEntity {
     this.email = email;
   }
 
-  public String getExperience() {
-    return experience;
+  public String getUser_experience() {
+    return user_experience;
   }
 
-  public void setExperience(String experience) {
-    this.experience = experience;
+  public void setUser_experience(String user_experience) {
+    this.user_experience = user_experience;
   }
 
 }

@@ -10,7 +10,10 @@ public class TribeProblemsEntity {
   @Id
   @GeneratedValue
   @Column
-  private int problemId;
+  private int problem_id;
+
+  @Column
+  private String problem_name;
 
   @Column
   private String owner;
@@ -19,18 +22,22 @@ public class TribeProblemsEntity {
   private String category;
 
   @Column
-  private String experience;
+  private String problem_experience;
 
-  @Column
-  private String filepath;
-
-
-  public int getProblemId() {
-    return problemId;
+  public int getProblem_id() {
+    return problem_id;
   }
 
-  public void setProblemId(int problemId) {
-    this.problemId = problemId;
+  public void setProblem_id(int problem_id) {
+    this.problem_id = problem_id;
+  }
+
+  public String getProblem_name() {
+    return problem_name;
+  }
+
+  public void setProblem_name(String problem_name) {
+    this.problem_name = problem_name;
   }
 
   public String getOwner() {
@@ -49,12 +56,12 @@ public class TribeProblemsEntity {
     this.category = category;
   }
 
-  public String getExperience() {
-    return experience;
+  public String getProblem_experience() {
+    return problem_experience;
   }
 
-  public void setExperience(String experience) {
-    this.experience = experience;
+  public void setProblem_experience(String problem_experience) {
+    this.problem_experience = problem_experience;
   }
 
   public String getFilepath() {
@@ -64,4 +71,8 @@ public class TribeProblemsEntity {
   public void setFilepath(String filepath) {
     this.filepath = filepath;
   }
+
+  @Column
+  private String filepath;
+
 }

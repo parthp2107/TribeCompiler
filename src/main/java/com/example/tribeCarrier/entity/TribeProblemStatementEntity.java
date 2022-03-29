@@ -11,7 +11,7 @@ public class TribeProblemStatementEntity {
   private String category;
 
   @Column
-  private String experience;
+  private String problem_experience;
 
   public String getCategory() {
     return category;
@@ -21,12 +21,12 @@ public class TribeProblemStatementEntity {
     this.category = category;
   }
 
-  public String getExperience() {
-    return experience;
+  public String getProblemExperience() {
+    return problem_experience;
   }
 
-  public void setExperience(String experience) {
-    this.experience = experience;
+  public void setExperience(String problem_experience) {
+    this.problem_experience = problem_experience;
   }
 
 }
