@@ -18,6 +18,9 @@ public class UserProblemEntity implements Serializable {
   @Column
   private int problem_id;
 
+  @Column
+  private int problem_time;
+
   public int getId() {
     return id;
   }
@@ -40,5 +43,13 @@ public class UserProblemEntity implements Serializable {
 
   public void setProblem_id(int problem_id) {
     this.problem_id = problem_id;
+  }
+
+  public int getProblem_time() {
+    return problem_time;
+  }
+
+  public void setProblem_time(int problem_time) {
+    this.problem_time = problem_time;
   }
 }

@@ -7,10 +7,8 @@ public class TribeProblemStatementEntity {
 
   public TribeProblemStatementEntity() {}
 
-  @Column
   private String category;
 
-  @Column
   private String problem_experience;
 
   public String getCategory() {

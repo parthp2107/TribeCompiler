@@ -3,6 +3,7 @@ package com.example.tribeCarrier.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -21,13 +22,8 @@ public class TribeUserLoginEntity {
   private String isLoggedIn;
 
   @Column
-  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-  @Temporal(TemporalType.DATE)
-  private Date sessionDate;
-
-  @JsonFormat(shape= JsonFormat.Shape.STRING, pattern="HH:mm:ss")
-  @Temporal(TemporalType.TIME)
-  private Date sessionTime;
+  @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Kolkata")
+  private Timestamp sessionTime;
 
   public int getId() {
     return id;
@@ -53,20 +49,11 @@ public class TribeUserLoginEntity {
     this.isLoggedIn = isLoggedIn;
   }
 
-
-  public Date getSessionDate() {
-    return sessionDate;
-  }
-
-  public void setSessionDate(Date  sessionDate) {
-    this.sessionDate = sessionDate;
-  }
-
-  public Date getSessionTime() {
+  public Timestamp getSessionTime() {
     return sessionTime;
   }
 
-  public void setSessionTime(Date sessionTime) {
+  public void setSessionTime(Timestamp sessionTime) {
     this.sessionTime = sessionTime;
   }
 

@@ -17,13 +17,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.sql.Timestamp;
+import java.util.*;
 
 @RestController()
 public class OneCompilerPost {
+
+  Calendar cal = Calendar.getInstance();
 
   @Value("${upload.path}")
   private String uploadPath;
@@ -49,15 +49,18 @@ public class OneCompilerPost {
 
   @PostMapping("/addUserProblemReference")
   private Object addUserProblemRef(@RequestBody UserProblemRef userProblemRef, UserProblemEntity userProblemEntity) {
-    List<Integer> output = new ArrayList<>();
+    List<Integer> problem_id = new ArrayList<>();
+    List<Integer> problem_time = new ArrayList<>();
     for (int i = 0; i < userProblemRef.getProblem_id().size(); i++) {
       UserProblemEntity userProblemEntity1 = new UserProblemEntity();
       userProblemEntity1.setId(userProblemEntity.getId());
       userProblemEntity1.setUser_id(userProblemRef.getUser_id());
-      output.add((Integer) userProblemRef.getProblem_id().get(i));
-      userProblemEntity1.setProblem_id(output.get(i));
+      problem_id.add((Integer) userProblemRef.getProblem_id().get(i));
+      userProblemEntity1.setProblem_id(problem_id.get(i));
+      problem_time.add((Integer) userProblemRef.getProblem_time().get(i));
+      userProblemEntity1.setProblem_time(problem_time.get(i));
       tribeService.addUserProblemRef(userProblemEntity1);
-    } return output;
+    } return problem_id;
   }
 
   @PostMapping("/getUserProblemDetails")
@@ -72,8 +75,7 @@ public class OneCompilerPost {
       TribeUserLoginEntity tribeUserLogin = new TribeUserLoginEntity();
       tribeUserLogin.setEmail(tribeCheckUserEntity.getEmail());
       tribeUserLogin.setIsLoggedIn("true");
-      tribeUserLogin.setSessionDate(new Date());
-      tribeUserLogin.setSessionTime(new Date());
+      tribeUserLogin.setSessionTime(new Timestamp(cal.getTime().getTime()));
       return tribeUserLogin;
     } else {
       throw new Exception("User not present");
@@ -94,6 +96,18 @@ public class OneCompilerPost {
     } else {
       throw new Exception("Problem Statement not present");
     }
+  }
+
+  @PostMapping("/startTest")
+  private StartTestEntity startTest(@RequestBody StartTestEntity startTestEntity) {
+    StartTestEntity startTestEntity1 = new StartTestEntity();
+    startTestEntity1.setUser_id(startTestEntity.getUser_id());
+    startTestEntity1.setStartTime(new Timestamp(new Date().getTime()));
+    startTestEntity1.setCumulative_time_minutes(startTestEntity.getCumulative_time_minutes());
+    cal.add(Calendar.MINUTE, startTestEntity.getCumulative_time_minutes());
+    Timestamp endTime = new Timestamp(cal.getTime().getTime());
+    startTestEntity1.setEndTime(endTime);
+    return startTestEntity1;
   }
 
   @PostMapping("/files")

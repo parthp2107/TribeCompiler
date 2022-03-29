@@ -13,6 +13,9 @@ public class TribeProblemsEntity {
   private int problem_id;
 
   @Column
+  private int problem_time;
+
+  @Column
   private String problem_name;
 
   @Column
@@ -30,6 +33,14 @@ public class TribeProblemsEntity {
 
   public void setProblem_id(int problem_id) {
     this.problem_id = problem_id;
+  }
+
+  public int getProblem_time() {
+    return problem_time;
+  }
+
+  public void setProblem_time(int problem_time) {
+    this.problem_time = problem_time;
   }
 
   public String getProblem_name() {

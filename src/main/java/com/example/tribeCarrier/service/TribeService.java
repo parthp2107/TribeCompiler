@@ -1,8 +1,10 @@
 package com.example.tribeCarrier.service;
 
+import com.example.tribeCarrier.entity.StartTestEntity;
 import com.example.tribeCarrier.entity.TribeCreateUserEntity;
 import com.example.tribeCarrier.entity.TribeProblemsEntity;
 import com.example.tribeCarrier.entity.UserProblemEntity;
+import com.example.tribeCarrier.repository.StartTestRepository;
 import com.example.tribeCarrier.repository.TribeProblemRepository;
 import com.example.tribeCarrier.repository.TribeRepository;
 import com.example.tribeCarrier.repository.UserProblemRepository;
@@ -33,6 +35,8 @@ public class TribeService {
   TribeProblemRepository tribeProblemRepository;
   @Autowired
   UserProblemRepository userProblemRepository;
+  @Autowired
+  StartTestRepository startTestRepository;
 
   public List<Object> getAllUsersById() {
     return tribeRepository.getAllById();
@@ -68,6 +72,10 @@ public class TribeService {
 
   public void addProblemStatement(TribeProblemsEntity tribeProblemsEntity) {
     tribeProblemRepository.save(tribeProblemsEntity);
+  }
+
+  public void startTestRecord(StartTestEntity startTestEntity) {
+    startTestRepository.save(startTestEntity);
   }
 
   public TribeProblemsEntity getUserByCategory(String category) {
