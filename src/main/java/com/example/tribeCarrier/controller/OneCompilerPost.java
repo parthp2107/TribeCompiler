@@ -76,6 +76,7 @@ public class OneCompilerPost {
       tribeUserLogin.setEmail(tribeCheckUserEntity.getEmail());
       tribeUserLogin.setIsLoggedIn("true");
       tribeUserLogin.setSessionTime(new Timestamp(cal.getTime().getTime()));
+      tribeService.saveUserLoginActivity(tribeUserLogin);
       return tribeUserLogin;
     } else {
       throw new Exception("User not present");
@@ -107,6 +108,7 @@ public class OneCompilerPost {
     cal.add(Calendar.MINUTE, startTestEntity.getCumulative_time_minutes());
     Timestamp endTime = new Timestamp(cal.getTime().getTime());
     startTestEntity1.setEndTime(endTime);
+    tribeService.startTestRecord(startTestEntity1);
     return startTestEntity1;
   }
 
