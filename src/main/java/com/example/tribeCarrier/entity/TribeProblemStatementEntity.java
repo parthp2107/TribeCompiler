@@ -7,9 +7,20 @@ public class TribeProblemStatementEntity {
 
   public TribeProblemStatementEntity() {}
 
+  private int problemId;
+
   private String category;
 
   private String problem_experience;
+
+
+  public int getProblemId() {
+    return problemId;
+  }
+
+  public void setProblemId(int problemId) {
+    this.problemId = problemId;
+  }
 
   public String getCategory() {
     return category;
@@ -19,11 +30,11 @@ public class TribeProblemStatementEntity {
     this.category = category;
   }
 
-  public String getProblemExperience() {
+  public String getProblem_experience() {
     return problem_experience;
   }
 
-  public void setExperience(String problem_experience) {
+  public void setProblem_experience(String problem_experience) {
     this.problem_experience = problem_experience;
   }
 

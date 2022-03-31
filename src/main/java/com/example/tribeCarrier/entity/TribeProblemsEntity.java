@@ -10,13 +10,37 @@ public class TribeProblemsEntity {
   @Id
   @GeneratedValue
   @Column
-  private int problem_id;
+  private int problemId;
 
   @Column
-  private int problem_time;
+  private int problemTime;
+
+  public int getProblemTime() {
+    return problemTime;
+  }
+
+  public void setProblemTime(int problemTime) {
+    this.problemTime = problemTime;
+  }
+
+  public String getProblemName() {
+    return problemName;
+  }
+
+  public void setProblemName(String problemName) {
+    this.problemName = problemName;
+  }
+
+  public String getProblemExperience() {
+    return problemExperience;
+  }
+
+  public void setProblemExperience(String problemExperience) {
+    this.problemExperience = problemExperience;
+  }
 
   @Column
-  private String problem_name;
+  private String problemName;
 
   @Column
   private String owner;
@@ -25,32 +49,15 @@ public class TribeProblemsEntity {
   private String category;
 
   @Column
-  private String problem_experience;
+  private String problemExperience;
 
-  public int getProblem_id() {
-    return problem_id;
+  public int getProblemId() {
+    return problemId;
   }
 
-  public void setProblem_id(int problem_id) {
-    this.problem_id = problem_id;
+  public void setProblemId(int problemId) {
+    this.problemId = problemId;
   }
-
-  public int getProblem_time() {
-    return problem_time;
-  }
-
-  public void setProblem_time(int problem_time) {
-    this.problem_time = problem_time;
-  }
-
-  public String getProblem_name() {
-    return problem_name;
-  }
-
-  public void setProblem_name(String problem_name) {
-    this.problem_name = problem_name;
-  }
-
   public String getOwner() {
     return owner;
   }
@@ -65,14 +72,6 @@ public class TribeProblemsEntity {
 
   public void setCategory(String category) {
     this.category = category;
-  }
-
-  public String getProblem_experience() {
-    return problem_experience;
-  }
-
-  public void setProblem_experience(String problem_experience) {
-    this.problem_experience = problem_experience;
   }
 
   public String getFilepath() {

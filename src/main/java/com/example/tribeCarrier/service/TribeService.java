@@ -74,8 +74,8 @@ public class TribeService {
     startTestRepository.save(startTestEntity);
   }
 
-  public TribeProblemsEntity getUserByCategory(String category) {
-    return tribeProblemRepository.findByCategory(category);
+  public TribeProblemsEntity getProblemById(int problem_id) {
+    return tribeProblemRepository.findByProblemId(problem_id);
   }
 
   public TribeUserLoginEntity saveUserLoginActivity(TribeUserLoginEntity tribeUserLogin) {

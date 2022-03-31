@@ -91,9 +91,10 @@ public class OneCompilerPost {
 
   @GetMapping("/getProblemStatement")
   private TribeProblemsEntity getProblemStatement(@RequestBody TribeProblemStatementEntity tribeProblemStatementEntity, TribeProblemsEntity tribeProblemsEntity) throws Exception {
-    if (Objects.equals(tribeProblemStatementEntity.getCategory(), tribeService.getUserByCategory(tribeProblemStatementEntity.getCategory()).getCategory()) &&
-            Objects.equals(tribeProblemStatementEntity.getProblemExperience(), tribeService.getUserByCategory(tribeProblemStatementEntity.getCategory()).getProblem_experience())) {
-      return tribeService.getProblemStatement(tribeProblemStatementEntity.getCategory(), tribeProblemStatementEntity.getProblemExperience());
+    if (Objects.equals(tribeProblemStatementEntity.getProblemId(), tribeService.getProblemById(tribeProblemStatementEntity.getProblemId()).getProblemId()) &&
+            Objects.equals(tribeProblemStatementEntity.getCategory(), tribeService.getProblemById(tribeProblemStatementEntity.getProblemId()).getCategory()) &&
+            Objects.equals(tribeProblemStatementEntity.getProblem_experience(), tribeService.getProblemById(tribeProblemStatementEntity.getProblemId()).getProblemExperience())) {
+      return tribeService.getProblemStatement(tribeProblemStatementEntity.getCategory(), tribeProblemStatementEntity.getProblem_experience());
     } else {
       throw new Exception("Problem Statement not present");
     }
