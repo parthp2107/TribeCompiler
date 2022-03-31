@@ -111,7 +111,7 @@ public class OneCompilerPost {
   }
 
   @PostMapping("/files")
-  public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+  public String uploadFile(@RequestHeader("file") MultipartFile file) throws IOException {
     Path filePath = Paths.get(uploadPath);
     try {
       tribeService.save(file);
