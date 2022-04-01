@@ -50,8 +50,8 @@ public class TribeService {
     return tribeProblemRepository.getProblemStatement(category, problem_experience);
   }
 
-  public List<Object> getUserProblemDetails(int user_id, int problem_id) {
-    return userProblemRepository.getUserProblemDetails(user_id, problem_id);
+  public List<Object> getUserProblemDetails(int user_id) {
+    return userProblemRepository.getUserProblemDetails(user_id);
   }
 
   public UserProblemEntity addUserProblemRef(UserProblemEntity userProblemEntity) {

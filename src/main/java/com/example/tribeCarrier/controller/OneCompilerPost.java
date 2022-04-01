@@ -23,8 +23,6 @@ import java.util.*;
 @RestController()
 public class OneCompilerPost {
 
-  Calendar cal = Calendar.getInstance();
-
   @Value("${upload.path}")
   private String uploadPath;
 
@@ -54,22 +52,23 @@ public class OneCompilerPost {
     for (int i = 0; i < userProblemRef.getProblemId().size(); i++) {
       UserProblemEntity userProblemEntity1 = new UserProblemEntity();
       userProblemEntity1.setId(userProblemEntity.getId());
-      userProblemEntity1.setUser_id(userProblemRef.getUserId());
+      userProblemEntity1.setUserId(userProblemRef.getUserId());
       problem_id.add((Integer) userProblemRef.getProblemId().get(i));
-      userProblemEntity1.setProblem_id(problem_id.get(i));
+      userProblemEntity1.setProblemId(problem_id.get(i));
       problem_time.add((Integer) userProblemRef.getProblemTime().get(i));
-      userProblemEntity1.setProblem_time(problem_time.get(i));
+      userProblemEntity1.setProblemTime(problem_time.get(i));
       tribeService.addUserProblemRef(userProblemEntity1);
     } return problem_id;
   }
 
   @PostMapping("/getUserProblemDetails")
   private List<Object> getUserProblemDetails(@RequestBody UserProblemEntity userProblemEntity) {
-    return tribeService.getUserProblemDetails(userProblemEntity.getUser_id(), userProblemEntity.getProblem_id());
+    return tribeService.getUserProblemDetails(userProblemEntity.getUserId());
   }
 
   @PostMapping("/user")
   public TribeUserLoginEntity getUserByEmail(@RequestBody TribeCheckUserEntity tribeCheckUserEntity, TribeCreateUserEntity tribeCreateUserEntity) throws Exception {
+    Calendar cal = Calendar.getInstance();
     if (Objects.equals(tribeCheckUserEntity.getEmail(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getEmail()) &&
             Objects.equals(tribeCheckUserEntity.getPassword(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getPassword())) {
       TribeUserLoginEntity tribeUserLogin = new TribeUserLoginEntity();
@@ -102,6 +101,7 @@ public class OneCompilerPost {
 
   @PostMapping("/startTest")
   private StartTestEntity startTest(@RequestBody StartTestEntity startTestEntity) {
+    Calendar cal = Calendar.getInstance();
     StartTestEntity startTestEntity1 = new StartTestEntity();
     startTestEntity1.setUser_id(startTestEntity.getUser_id());
     startTestEntity1.setStartTime(new Timestamp(new Date().getTime()));

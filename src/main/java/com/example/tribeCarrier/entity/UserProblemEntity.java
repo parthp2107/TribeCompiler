@@ -13,13 +13,13 @@ public class UserProblemEntity implements Serializable {
   private int id;
 
   @Column
-  private int user_id;
+  private int userId;
 
   @Column
-  private int problem_id;
+  private int problemId;
 
   @Column
-  private int problem_time;
+  private int problemTime;
 
   public int getId() {
     return id;
@@ -29,27 +29,27 @@ public class UserProblemEntity implements Serializable {
     this.id = id;
   }
 
-  public int getUser_id() {
-    return user_id;
+  public int getUserId() {
+    return userId;
   }
 
-  public void setUser_id(int user_id) {
-    this.user_id = user_id;
+  public void setUserId(int userId) {
+    this.userId = userId;
   }
 
-  public int getProblem_id() {
-    return problem_id;
+  public int getProblemId() {
+    return problemId;
   }
 
-  public void setProblem_id(int problem_id) {
-    this.problem_id = problem_id;
+  public void setProblemId(int problemId) {
+    this.problemId = problemId;
   }
 
-  public int getProblem_time() {
-    return problem_time;
+  public int getProblemTime() {
+    return problemTime;
   }
 
-  public void setProblem_time(int problem_time) {
-    this.problem_time = problem_time;
+  public void setProblemTime(int problemTime) {
+    this.problemTime = problemTime;
   }
 }
