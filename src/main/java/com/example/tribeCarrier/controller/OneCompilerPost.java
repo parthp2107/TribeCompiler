@@ -32,12 +32,12 @@ public class OneCompilerPost {
   TribeService tribeService;
 
   @GetMapping("/getAllUserId")
-  private List<Object> getAllUsersId() {
+  private List<TribeCreateUserEntity> getAllUsersId() {
     return tribeService.getAllUsersById();
   }
 
   @GetMapping("/getAllProblemId")
-    private List<Object> getAllProblemId() {
+    private List<TribeProblemsEntity> getAllProblemId() {
       return tribeService.getAllProblemId();
     }
 
@@ -51,13 +51,13 @@ public class OneCompilerPost {
   private Object addUserProblemRef(@RequestBody UserProblemRef userProblemRef, UserProblemEntity userProblemEntity) {
     List<Integer> problem_id = new ArrayList<>();
     List<Integer> problem_time = new ArrayList<>();
-    for (int i = 0; i < userProblemRef.getProblem_id().size(); i++) {
+    for (int i = 0; i < userProblemRef.getProblemId().size(); i++) {
       UserProblemEntity userProblemEntity1 = new UserProblemEntity();
       userProblemEntity1.setId(userProblemEntity.getId());
-      userProblemEntity1.setUser_id(userProblemRef.getUser_id());
-      problem_id.add((Integer) userProblemRef.getProblem_id().get(i));
+      userProblemEntity1.setUser_id(userProblemRef.getUserId());
+      problem_id.add((Integer) userProblemRef.getProblemId().get(i));
       userProblemEntity1.setProblem_id(problem_id.get(i));
-      problem_time.add((Integer) userProblemRef.getProblem_time().get(i));
+      problem_time.add((Integer) userProblemRef.getProblemTime().get(i));
       userProblemEntity1.setProblem_time(problem_time.get(i));
       tribeService.addUserProblemRef(userProblemEntity1);
     } return problem_id;

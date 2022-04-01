@@ -12,6 +12,6 @@ public interface TribeProblemRepository extends CrudRepository<TribeProblemsEnti
   @Query(value = "select * from tribe_problem where category=?1 and problem_experience=?2", nativeQuery = true)
   public TribeProblemsEntity getProblemStatement(String category, String problem_experience);
 
-  @Query(value = "select problem_id, problem_name from tribe_problem", nativeQuery = true)
-    List<Object> getAllProblemId();
+  @Query(value = "select * from tribe_problem", nativeQuery = true)
+    List<TribeProblemsEntity> getAllProblemId();
 }

@@ -9,6 +9,6 @@ import java.util.List;
 public interface TribeRepository extends CrudRepository<TribeCreateUserEntity, Integer> {
   TribeCreateUserEntity findByEmail(String email);
 
-  @Query(value = "select id, name from TRIBE_COMPILER", nativeQuery = true)
-  List<Object> getAllById();
+  @Query(value = "select * from TRIBE_COMPILER", nativeQuery = true)
+  List<TribeCreateUserEntity> getAllById();
 }

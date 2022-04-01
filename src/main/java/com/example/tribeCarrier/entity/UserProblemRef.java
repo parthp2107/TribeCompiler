@@ -4,33 +4,33 @@ import java.util.List;
 
 public class UserProblemRef {
 
-  private int user_id;
+  private int userId;
 
-  private List<Object> problem_id;
+  private List<Object> problemId;
 
-  private List<Object> problem_time;
+  private List<Object> problemTime;
 
-  public int getUser_id() {
-    return user_id;
+  public int getUserId() {
+    return userId;
   }
 
-  public void setUser_id(int user_id) {
-    this.user_id = user_id;
+  public void setUserId(int userId) {
+    this.userId = userId;
   }
 
-  public List<Object> getProblem_id() {
-    return problem_id;
+  public List<Object> getProblemId() {
+    return problemId;
   }
 
-  public void setProblem_id(List<Object> problem_id) {
-    this.problem_id = problem_id;
+  public void setProblemId(List<Object> problemId) {
+    this.problemId = problemId;
   }
 
-  public List<Object> getProblem_time() {
-    return problem_time;
+  public List<Object> getProblemTime() {
+    return problemTime;
   }
 
-  public void setProblem_time(List<Object> problem_time) {
-    this.problem_time = problem_time;
+  public void setProblemTime(List<Object> problemTime) {
+    this.problemTime = problemTime;
   }
 }

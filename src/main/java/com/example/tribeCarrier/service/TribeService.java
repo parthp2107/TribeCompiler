@@ -34,11 +34,11 @@ public class TribeService {
   @Autowired
   TribeUserLoginRepository tribeUserLoginRepository;
 
-  public List<Object> getAllUsersById() {
+  public List<TribeCreateUserEntity> getAllUsersById() {
     return tribeRepository.getAllById();
   }
 
-  public List<Object> getAllProblemId() {
+  public List<TribeProblemsEntity> getAllProblemId() {
     return tribeProblemRepository.getAllProblemId();
   }
 
