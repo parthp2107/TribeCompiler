@@ -15,30 +15,6 @@ public class TribeProblemsEntity {
   @Column
   private int problemTime;
 
-  public int getProblemTime() {
-    return problemTime;
-  }
-
-  public void setProblemTime(int problemTime) {
-    this.problemTime = problemTime;
-  }
-
-  public String getProblemName() {
-    return problemName;
-  }
-
-  public void setProblemName(String problemName) {
-    this.problemName = problemName;
-  }
-
-  public String getProblemExperience() {
-    return problemExperience;
-  }
-
-  public void setProblemExperience(String problemExperience) {
-    this.problemExperience = problemExperience;
-  }
-
   @Column
   private String problemName;
 
@@ -50,6 +26,9 @@ public class TribeProblemsEntity {
 
   @Column
   private String problemExperience;
+
+  @Column
+  private String filepath;
 
   public int getProblemId() {
     return problemId;
@@ -82,7 +61,28 @@ public class TribeProblemsEntity {
     this.filepath = filepath;
   }
 
-  @Column
-  private String filepath;
+  public int getProblemTime() {
+    return problemTime;
+  }
+
+  public void setProblemTime(int problemTime) {
+    this.problemTime = problemTime;
+  }
+
+  public String getProblemName() {
+    return problemName;
+  }
+
+  public void setProblemName(String problemName) {
+    this.problemName = problemName;
+  }
+
+  public String getProblemExperience() {
+    return problemExperience;
+  }
+
+  public void setProblemExperience(String problemExperience) {
+    this.problemExperience = problemExperience;
+  }
 
 }

@@ -72,6 +72,7 @@ public class OneCompilerPost {
     if (Objects.equals(tribeCheckUserEntity.getEmail(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getEmail()) &&
             Objects.equals(tribeCheckUserEntity.getPassword(), tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getPassword())) {
       TribeUserLoginEntity tribeUserLogin = new TribeUserLoginEntity();
+      tribeUserLogin.setId(tribeService.getUserByEmail(tribeCheckUserEntity.getEmail()).getUserId());
       tribeUserLogin.setEmail(tribeCheckUserEntity.getEmail());
       tribeUserLogin.setIsLoggedIn("true");
       tribeUserLogin.setSessionTime(new Timestamp(cal.getTime().getTime()));
