@@ -50,7 +50,7 @@ public class TribeService {
     return tribeProblemRepository.getProblemStatement(category, problem_experience);
   }
 
-  public List<Object> getUserProblemDetails(int user_id) {
+  public List<UserProblemProjection> getUserProblemDetails(int user_id) {
     return userProblemRepository.getUserProblemDetails(user_id);
   }
 

@@ -62,7 +62,7 @@ public class OneCompilerPost {
   }
 
   @PostMapping("/getUserProblemDetails")
-  private List<Object> getUserProblemDetails(@RequestBody UserProblemEntity userProblemEntity) {
+  private List<UserProblemProjection> getUserProblemDetails(@RequestBody UserProblemEntity userProblemEntity) {
     return tribeService.getUserProblemDetails(userProblemEntity.getUserId());
   }
 
