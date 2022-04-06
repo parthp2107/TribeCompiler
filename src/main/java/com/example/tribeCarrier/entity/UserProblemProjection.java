@@ -1,13 +1,13 @@
 package com.example.tribeCarrier.entity;
 
 public interface UserProblemProjection {
-  String getuserId();
+  int getuserId();
   String getname();
   String getemail();
   String getuserExperience();
-  String getproblemId();
+  int getproblemId();
   String getproblemName();
   String getcategory();
   String getproblemExperience();
-  String getproblemTime();
+  int getproblemTime();
 }
